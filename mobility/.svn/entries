@@ -1,0 +1,82 @@
+8
+
+dir
+62
+svn://ccsl.ime.usp.br/jabuti/tags/JABUTI_1_0_3/src/br/jabuti/mobility
+svn://ccsl.ime.usp.br/jabuti
+
+
+
+2009-09-24T22:00:22.913964Z
+45
+delamaro
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a0e18fea-f406-43a2-b9f5-af6b1e49e6a3
+
+HostTraceReader.java
+file
+
+
+
+
+2009-11-17T20:54:33.000000Z
+06501933c3d2350dc797e1f555011ba8
+2009-09-24T22:00:22.913964Z
+45
+delamaro
+
+mobile
+dir
+
+HostProberInstrum.java
+file
+
+
+
+
+2009-11-17T20:54:33.000000Z
+e327884ed4b5ca21184771f6dd3c80d9
+2009-09-24T22:00:22.913964Z
+45
+delamaro
+
+HostProbeInsert.java
+file
+
+
+
+
+2009-11-17T20:54:33.000000Z
+1d9055d57cf2010966f8c4ac96be81cc
+2009-09-24T22:00:22.913964Z
+45
+delamaro
+
+abstractions
+dir
+
+HostProberServer.java
+file
+
+
+
+
+2009-11-17T20:54:33.000000Z
+d833be0701ee121d3f359483a3ccb5c2
+2009-09-24T22:00:22.913964Z
+45
+delamaro
+
