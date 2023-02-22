@@ -277,7 +277,7 @@ public class ProberInstrum {
 
 		// esta com pau aqui.... Precisa ignorar as classes com
 		// ClassFormatException geradas pelo BCEL.
-		// Essas classes devem ser excluidas da instrumentação mas incluidas no
+		// Essas classes devem ser excluidas da instrumentaÃ§Ã£o mas incluidas no
 		// jar sem serem instrumentadas.
 
 		try {

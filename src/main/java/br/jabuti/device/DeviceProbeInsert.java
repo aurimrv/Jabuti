@@ -124,7 +124,7 @@ public class DeviceProbeInsert extends DefaultProbeInsert {
 
     protected JavaClass doMethodInstrument(JavaClass java_class)
     {
-    	/* o trecho abaixo � inserido no inicio do metodo startApp 
+    	/* o trecho abaixo ï¿½ inserido no inicio do metodo startApp 
     	   corresponde a:
 
     	 	HostProber.init(fileName, server, );

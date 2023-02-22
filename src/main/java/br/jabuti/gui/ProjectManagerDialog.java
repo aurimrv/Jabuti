@@ -589,7 +589,7 @@ class ProjectManagerDialog extends JDialog {
         int k = 1;
 
         for (int i = 0; i < packs.length; i++) {
-        	// S� inserir o package se ele n�o for avoided
+        	// Sï¿½ inserir o package se ele nï¿½o for avoided
             DefaultMutableTreeNode nd = new DefaultMutableTreeNode(packs[i]);
 
             root.add(nd);
@@ -598,7 +598,7 @@ class ProjectManagerDialog extends JDialog {
 
             for (int j = 0; j < cls.length; j++) {
                 String cs = RClass.getClassName(cls[j]);
-                // S� inserir a classe se ela n�o pertencer a instrSet
+                // Sï¿½ inserir a classe se ela nï¿½o pertencer a instrSet
                 DefaultMutableTreeNode ndclass = new DefaultMutableTreeNode(cs);
 
                 nd.add(ndclass);

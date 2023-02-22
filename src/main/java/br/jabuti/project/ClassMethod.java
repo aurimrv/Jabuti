@@ -460,8 +460,8 @@ public class ClassMethod {
 						boolean isRequired = false;
 						GraphNode curNode =
 							((ReduceNode) nodes[z]).getOriginalNode();
-						// Verifica se o nó que pertence ao super-bloco 
-						// faz parte do conjunto de requisitos do critério
+						// Verifica se o nÃ³ que pertence ao super-bloco 
+						// faz parte do conjunto de requisitos do critÃ©rio
 						if (criterion.getRequirementByLabel(curNode.getLabel())
 							!= null) {
 							for (int i = 0; i < required.length; i++) {

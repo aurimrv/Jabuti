@@ -108,7 +108,7 @@ public class RRDominator implements RoundRobinExecutor {
 
     /** Para inicializar os conjuntos de dominadores, o metodo abaixo
      * adiciona todos os nos que estao no conjunto de dominadores dos
-     * seus predecessores, primarios ou secundários.
+     * seus predecessores, primarios ou secundÃ¡rios.
      */
     public void init(GraphNode theNode,
             Vector primary, 

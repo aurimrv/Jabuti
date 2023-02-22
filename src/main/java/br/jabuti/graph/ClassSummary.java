@@ -51,7 +51,7 @@ import br.jabuti.verifier.InvalidStackArgument;
 
  @version: 0.00001
  @author: Auri Marcelo Rizzo Vincenzi
- Márcio Eduardo Delamaro
+ MÃ¡rcio Eduardo Delamaro
 
  */
 
@@ -213,7 +213,7 @@ public class ClassSummary {
     }
  	
     /**
-     Capturar e imprimir as informações sobre definições e usuos de variáveis.
+     Capturar e imprimir as informaÃ§Ãµes sobre definiÃ§Ãµes e usuos de variÃ¡veis.
      Gerar o CFG por metodo de cada uma das classes.
      */
  	

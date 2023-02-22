@@ -43,7 +43,7 @@ import br.jabuti.util.Debug;
 
  @version: 0.00001
  @author: Auri Marcelo Rizzo Vincenzi
- M�rcio Eduardo Delamaro
+ Mï¿½rcio Eduardo Delamaro
 
  */
 

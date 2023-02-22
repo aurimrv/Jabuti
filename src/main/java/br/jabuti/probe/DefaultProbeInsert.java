@@ -103,7 +103,7 @@ public class DefaultProbeInsert {
 					jv = doDefaultInstrument(jv, userClass[i], typeOfCFG);
 	        		hs.put(r.getName(), jv);
 				} 
-                catch (Exception e) { //Se der exce��o, coloca bytecode nao instrumentado em hs
+                catch (Exception e) { //Se der exceï¿½ï¿½o, coloca bytecode nao instrumentado em hs
                     hs.put(userClass[i], jv);
 				}                
                 inst.remove(userClass[i]);
@@ -267,11 +267,11 @@ public class DefaultProbeInsert {
                     }
                 }
                 int stackSize = mg.getMaxStack();
-                // Tentativa de contornar os erros do BCEL que n�o altera corretamente o tamanho da pilha
+                // Tentativa de contornar os erros do BCEL que nï¿½o altera corretamente o tamanho da pilha
                 if ( stackSize < 6 ) {
                 	mg.setMaxStack(stackSize + 6);
                 }
-                // Remove LVTT do c�digo. Tenta evitar geracao errada do BCEL 5.2
+                // Remove LVTT do cï¿½digo. Tenta evitar geracao errada do BCEL 5.2
                 ConstantPoolGen p = mg.getConstantPool();
                 for (Attribute atr : mg.getCodeAttributes()) {
                     int k = atr.getNameIndex();

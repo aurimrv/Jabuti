@@ -44,7 +44,7 @@ import br.jabuti.util.ToolConstants;
  to insert JVM code in a given JVM method.
 
  @version: 0.00001
- @author: M�rcio Eduardo Delamaro
+ @author: Mï¿½rcio Eduardo Delamaro
 
  */
 

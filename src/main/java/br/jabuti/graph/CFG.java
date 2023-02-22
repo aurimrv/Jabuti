@@ -250,7 +250,7 @@ public class CFG extends Graph {
             }
               
  O trecho acima foi substituido pela instrucao abaixo. Na construcao
- do InstructionGraph, jah eh calculado se um no é um super ou nao.
+ do InstructionGraph, jah eh calculado se um no Ã© um super ou nao.
  */
 
 			boolean isSuperCall = x.isSuper;

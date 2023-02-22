@@ -470,7 +470,7 @@ class SourcePanel extends JPanel {
 	                                        sourceColor.setElementAt(new Integer(c), srcLine);
 	                                    }
 									} catch (ArrayIndexOutOfBoundsException aobe) {
-										//System.out.println("Exceção gerada");									
+										//System.out.println("ExceÃ§Ã£o gerada");									
 									}
 									//System.out.println( "\tBytecode position: " + ih.getPosition() );
 									//System.out.println( "\tSource line position: " + srcLine );
@@ -484,7 +484,7 @@ class SourcePanel extends JPanel {
 	                                            sourceColor.setElementAt(new Integer(c), srcLine);
 	                                        }
 										} catch (ArrayIndexOutOfBoundsException aobe) {
-											//System.out.println("Exceção gerada");									
+											//System.out.println("ExceÃ§Ã£o gerada");									
 										}
 										//System.out.println( "\tBytecode position: " + ih.getPosition() );
 										//System.out.println( "\tSource line position: " + srcLine );

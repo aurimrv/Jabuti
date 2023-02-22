@@ -111,7 +111,7 @@ public class AllPotUses extends AbstractCriterion {
 	        		
 					
 				// se numero de sucesores <= 1 entao existe uma 
-				// associa��o defini��o / uso no noh (computacional)
+				// associaï¿½ï¿½o definiï¿½ï¿½o / uso no noh (computacional)
 	            if ( contNext <= 1 )
 	            {
 	            	if (! defNode.getLabel().equals(g.getLabel()) ) // despreza uso local
@@ -188,7 +188,7 @@ public class AllPotUses extends AbstractCriterion {
             nextDefNode:
             for (int j = 0; j < path.length - 1; j++) {
             	// percorre a partir do inicio do caminho, procurando
-            	// primeiro o no onde ocorre a defini��o
+            	// primeiro o no onde ocorre a definiï¿½ï¿½o
                 String from = null;
 
                 if (path[j] instanceof Integer) {
@@ -200,7 +200,7 @@ public class AllPotUses extends AbstractCriterion {
                     continue;
                 }
                 
-                // j � o no onde tem a defini��o
+                // j ï¿½ o no onde tem a definiï¿½ï¿½o
                 
                 // se uso predicativo, testa se eh <x, j, (j, j+1)>
                 if ( use2 != null)

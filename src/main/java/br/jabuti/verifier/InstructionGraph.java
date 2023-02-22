@@ -374,7 +374,7 @@ public class InstructionGraph extends Graph {
                             continue nextException;
                         }
                     }
-                    // procura quem trata da interrup��o
+                    // procura quem trata da interrupï¿½ï¿½o
                     for (int k = i - 1; k >= 0; k--) {
                         InstructionNode dftk = (InstructionNode) dft[k];
 

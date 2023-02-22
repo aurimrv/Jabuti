@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.jabuti</groupId>
+	<groupId>jabuti</groupId>
 	<artifactId>jabuti</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.4</version>
@@ -22,7 +22,33 @@
 		<jacoco.version>0.8.8</jacoco.version>
 	</properties>
 
+	<repositories>
+	    <repository>
+	        <id>local-maven-repo</id>
+	        <url>file:///${pom.basedir}/lib</url>
+	    </repository>
+	</repositories>
+
 	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>[4.13,)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.bcel</groupId>
+			<artifactId>bcel</artifactId>
+			<version>[6.4.1,)</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.graphbuilder</groupId>
+		    <artifactId>capi</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${pom.basedir}/lib/capi-1.0.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -54,6 +80,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
 				<configuration>
 					<fork>true</fork>
 					<meminitial>128m</meminitial>
@@ -107,9 +134,43 @@
 				</executions>
 			</plugin>
 
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-assembly-plugin</artifactId>
+	            <version>3.1.1</version>
+
+	            <configuration>
+	                <descriptorRefs>
+	                    <descriptorRef>jar-with-dependencies</descriptorRef>
+	                </descriptorRefs>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>br.jabuti.gui.JabutiGUI</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>.</Class-Path>
+						</manifestEntries>
+					</archive>
+					<finalName>JaBUTi/${project.artifactId}-${project.version}-full</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+	            <executions>
+	                <execution>
+	                    <id>make-assembly</id>
+	                    <phase>package</phase>
+	                    <goals>
+	                        <goal>single</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+
+	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -121,7 +182,7 @@
 							<Class-Path>.</Class-Path>
 						</manifestEntries>
 					</archive>
-					<finalName>JaBUTi/JaBUTi</finalName>
+					<finalName>JaBUTi/${project.artifactId}-${project.version}</finalName>
 				</configuration>
 			</plugin>
 

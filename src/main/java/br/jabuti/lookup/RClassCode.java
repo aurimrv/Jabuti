@@ -172,7 +172,7 @@ import br.jabuti.util.Persistency;
     		
     		
     		met = jc.getClassName() + "." + mv[i].getName()+ mv[i].getSignature();
-    		System.out.println("Metodo Aplicação = " + met);
+    		System.out.println("Metodo AplicaÃ§Ã£o = " + met);
     		System.out.println("Metodo Parametro = " + assinatura);
     		
     		if (met.equals(assinatura))

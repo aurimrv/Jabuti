@@ -304,7 +304,7 @@ public class AllEdges extends AbstractCriterion {
             	an.setFeasible( req[j] );
             }
 
-			// Obtendo os requisitos por meio de seus r�tulos
+			// Obtendo os requisitos por meio de seus rï¿½tulos
             for (int j = 0; j < req.length; j++) {
             	Object o = an.getRequirementByLabel( req[j].toString() );
             }

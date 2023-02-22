@@ -3407,7 +3407,7 @@ public class JabutiGUI extends JFrame {
 			comboPanel.setLayout(new BorderLayout());
 
 			// Choice com o nome de todas as classes
-			// de todos os m�todos
+			// de todos os mï¿½todos
 			classCombo = new JComboBox(classes);
 			classCombo.setSelectedItem(getProject().getCurClassName());
 
@@ -3420,7 +3420,7 @@ public class JabutiGUI extends JFrame {
 			ClassFile cf = prj.getClassFile(getProject().getCurClassName());
 			String[] methods = cf.getAllMethodsNames();
 
-			// Choice com o nome de todos os m�todos da classe selecionada
+			// Choice com o nome de todos os mï¿½todos da classe selecionada
 			if (methods != null) {
 				methodCombo = new JComboBox(methods);
 				methodCombo.setSelectedItem(getProject().getCurMethodName());

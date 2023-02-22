@@ -916,10 +916,10 @@ public class InstructionNode extends GraphNode {
             // t1 = tipo do indice (inteiro)
 //            Type t1 = st.top(k).type;
             
-            // t2 � o tipo do array por exemplo int[]
+            // t2 ï¿½ o tipo do array por exemplo int[]
             Type t3, t2 = st.top(k + 1).type;
 			
-			// t3 � o tipo do elemento a ser armazenado p.e. int se t2 = int[]
+			// t3 ï¿½ o tipo do elemento a ser armazenado p.e. int se t2 = int[]
             if (t2 instanceof ArrayType) {
                 t3 = ((ArrayType) t2).getElementType();
             } else {

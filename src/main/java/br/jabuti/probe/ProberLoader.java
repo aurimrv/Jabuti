@@ -40,7 +40,7 @@ import br.jabuti.util.ToolConstants;
  * JVM method.
  * 
  * @version: 0.00001
- * @author: Auri Marcelo Rizzo Vincenzi M�rcio Eduardo Delamaro
+ * @author: Auri Marcelo Rizzo Vincenzi Mï¿½rcio Eduardo Delamaro
  * 
  */
 
@@ -124,7 +124,7 @@ public class ProberLoader {
 				System.out.println("Error: Missing base class!!!");
 				System.exit(0);
 			}
-			// Ultimo par�metro... file seguido dos par�metros
+			// Ultimo parï¿½metro... file seguido dos parï¿½metros
 			baseClass = args[i++];
 			// System.out.println("Loaded: " + clo.loadClass(baseClass));
 

@@ -268,7 +268,7 @@ public class Program implements Serializable {
         }
         
         // elimina aquelas classes que nao pertencem ao escopo
-        // e que n„o possuem sub-classe ou implementaÁ„o
+        // e que n√£o possuem sub-classe ou implementa√ß√£o
 		en = classes.elements();
         while (en.hasMoreElements())
         {
@@ -278,7 +278,7 @@ public class Program implements Serializable {
 				continue;
 			}		// this class is not of interest
 			if ( dc.implementations.size() == dc.subclasses.size())
-			{ // se s„o iguais, ambos s„o 0
+			{ // se s√£o iguais, ambos s√£o 0
 				classes.remove(dc.name);
 			}
         }

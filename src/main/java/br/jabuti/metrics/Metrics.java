@@ -224,14 +224,14 @@ public class Metrics
 	}
 
 
-/**<p>Falta de Coes„o entre os mÈtodos </p>
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de pares de
-mÈtodos na classe que n„o compartilham vari·veis de inst‚ncia
-menos o n˙mero de pares de mÈtodos que compartilham vari·veis de
-inst‚ncia. Quando o resultado È negativo, a mÈtrica recebe o valor
-zero. Os mÈtodos est·ticos n„o s„o considerados na contagem, uma
-vez que sÛ as vari·veis de inst‚ncia s„o tomadas. Construtores 
-s„o considerados</p>
+/**<p>Falta de Coes√£o entre os m√©todos </p>
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de pares de
+m√©todos na classe que n√£o compartilham vari√°veis de inst√¢ncia
+menos o n√∫mero de pares de m√©todos que compartilham vari√°veis de
+inst√¢ncia. Quando o resultado √© negativo, a m√©trica recebe o valor
+zero. Os m√©todos est√°ticos n√£o s√£o considerados na contagem, uma
+vez que s√≥ as vari√°veis de inst√¢ncia s√£o tomadas. Construtores 
+s√£o considerados</p>
  */
     public double lcom(String className)
     {
@@ -239,8 +239,8 @@ s„o considerados</p>
     }
 
 
-/**<p>Falta de Coes„o entre os mÈtodos </p>
-<p>O mesmo que LCOM porÈm sÛ os metodos est·ticos s„o 
+/**<p>Falta de Coes√£o entre os m√©todos </p>
+<p>O mesmo que LCOM por√©m s√≥ os metodos est√°ticos s√£o 
 considerados </p>
 */
     public double lcom_2(String className)
@@ -248,7 +248,7 @@ considerados </p>
     	return lcom_0(className, true);
     }
 
-/**<p>Falta de Coes„o entre os mÈtodos </p>
+/**<p>Falta de Coes√£o entre os m√©todos </p>
 <p> lcom + lcom_2</p>
 */
     public double lcom_3(String className)
@@ -364,10 +364,10 @@ considerados </p>
     	return (double) il.getLength();
     }
     
-/**<p>N˙mero de mÈtodos ponderados por classe </p>
-<p>MÈtrica calculada atravÈs da soma da complexidade de cada mÈtodo.
-Usa CC (McCabe) como mÈtrica de complexidade por metodo 
-Construtores s„o considerados. </p>
+/**<p>N√∫mero de m√©todos ponderados por classe </p>
+<p>M√©trica calculada atrav√©s da soma da complexidade de cada m√©todo.
+Usa CC (McCabe) como m√©trica de complexidade por metodo 
+Construtores s√£o considerados. </p>
 */
     public double wmc_cc(String className)
     {
@@ -396,9 +396,9 @@ Construtores s„o considerados. </p>
         return theValue;
     }
 
-/**<p>N˙mero de mÈtodos ponderados por classe </p>
-<p>MÈtrica calculada atravÈs da soma da complexidade de cada mÈtodo.
-Usa 1 como mÈtrica de complexidade por metodo </p>
+/**<p>N√∫mero de m√©todos ponderados por classe </p>
+<p>M√©trica calculada atrav√©s da soma da complexidade de cada m√©todo.
+Usa 1 como m√©trica de complexidade por metodo </p>
 */
     public double wmc_1(String className)
     {
@@ -418,9 +418,9 @@ Usa 1 como mÈtrica de complexidade por metodo </p>
         return (double) theValue;
     }
 
-/**<p>N˙mero de mÈtodos ponderados por classe </p>
-<p>MÈtrica calculada atravÈs da soma da complexidade de cada mÈtodo.
-Usa LOCM (linhas de codigo) como mÈtrica de complexidade por metodo </p>
+/**<p>N√∫mero de m√©todos ponderados por classe </p>
+<p>M√©trica calculada atrav√©s da soma da complexidade de cada m√©todo.
+Usa LOCM (linhas de codigo) como m√©trica de complexidade por metodo </p>
 */
     public double wmc_locm(String className)
     {
@@ -445,9 +445,9 @@ Usa LOCM (linhas de codigo) como mÈtrica de complexidade por metodo </p>
         return theValue;
     }
 
-/**<p>N˙mero de mÈtodos ponderados por classe </p>
-<p>MÈtrica calculada atravÈs da soma da complexidade de cada mÈtodo.
-Usa size (n˙mero de instruÁıes) como mÈtrica de complexidade por metodo </p>
+/**<p>N√∫mero de m√©todos ponderados por classe </p>
+<p>M√©trica calculada atrav√©s da soma da complexidade de cada m√©todo.
+Usa size (n√∫mero de instru√ß√µes) como m√©trica de complexidade por metodo </p>
 */
     public double wmc_size(String className)
     {
@@ -484,9 +484,9 @@ Usa size (n˙mero de instruÁıes) como mÈtrica de complexidade por metodo </p>
     	return v;
     }
 	
-/**<p>Complexidade Ciclom·tica de McCabe </p>
+/**<p>Complexidade Ciclom√°tica de McCabe </p>
 <p>Calculado como o valor maximo da CC para os metodos 
-Construtores s„o considerados. </p>
+Construtores s√£o considerados. </p>
 */
     public double cc_max(String className)
     {
@@ -516,9 +516,9 @@ Construtores s„o considerados. </p>
     }
 	
 
-/**<p>Complexidade Ciclom·tica de McCabe </p>
-<p>Calculado como o valor mÈdio da CC para os metodos 
-Construtores s„o considerados. </p>
+/**<p>Complexidade Ciclom√°tica de McCabe </p>
+<p>Calculado como o valor m√©dio da CC para os metodos 
+Construtores s√£o considerados. </p>
 */
     public double cc_avg(String className)
     {
@@ -550,13 +550,13 @@ Construtores s„o considerados. </p>
     }
     
 /**<p>Resposta para uma classe </p>
-<p>MÈtrica calculada atravÈs da soma do n˙mero de mÈtodos da classe
-mais os mÈtodos que s„o invocados diretamente por eles. … o n˙mero
-de mÈtodos que podem ser potencialmente executados em resposta a
+<p>M√©trica calculada atrav√©s da soma do n√∫mero de m√©todos da classe
+mais os m√©todos que s√£o invocados diretamente por eles. √â o n√∫mero
+de m√©todos que podem ser potencialmente executados em resposta a
 uma mensagem recebida por um objeto de uma classe ou por algum
-mÈtodo da classe. Quando um mÈtodo polimÛrfico È chamado para
-diferentes classes, cada diferente chamada È contada uma vez. 
-Construtores s„o considerados. </p>
+m√©todo da classe. Quando um m√©todo polim√≥rfico √© chamado para
+diferentes classes, cada diferente chamada √© contada uma vez. 
+Construtores s√£o considerados. </p>
 */
     public double rfc(String className)
     {
@@ -608,13 +608,13 @@ Construtores s„o considerados. </p>
     }
 
 /**<p>Acoplamento entre objetos </p>
-<p>H· acoplamento entre duas classes quando uma classe usa mÈtodos
-e/ou vari·veis de inst‚ncia de outra classe. MÈtrica calculada
-atravÈs da contagem do n˙mero de classes ‡s quais uma classe est·
+<p>H√° acoplamento entre duas classes quando uma classe usa m√©todos
+e/ou vari√°veis de inst√¢ncia de outra classe. M√©trica calculada
+atrav√©s da contagem do n√∫mero de classes √†s quais uma classe est√°
 acoplada de alguma forma, o que exclui o acoplamento baseado em
-heranÁa. Assim, o valor CBO de uma classe A È o n˙mero de classes
-das quais a classe A utiliza algum mÈtodo e/ou vari·vel de
-inst‚ncia. </p>
+heran√ßa. Assim, o valor CBO de uma classe A √© o n√∫mero de classes
+das quais a classe A utiliza algum m√©todo e/ou vari√°vel de
+inst√¢ncia. </p>
 */
     public double cbo( String className )
     {
@@ -643,9 +643,9 @@ inst‚ncia. </p>
 ////////////////////////////////////////////////////////////////////////////
 ///////// METRICS LK
 
-/** <p>N˙mero de mÈtodos de inst‚ncia p˙blicos na classe</p>
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de mÈtodos de
-inst‚ncia p˙blicas na classe, incluindo os construtores.</p>
+/** <p>N√∫mero de m√©todos de inst√¢ncia p√∫blicos na classe</p>
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de m√©todos de
+inst√¢ncia p√∫blicas na classe, incluindo os construtores.</p>
 */
     public double npim(String className)
     {
@@ -669,8 +669,8 @@ inst‚ncia p˙blicas na classe, incluindo os construtores.</p>
 		return (double) cont;
 	}
 
-/**<p>N˙mero de mÈtodos de classe na classe</p> 
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de mÈtodos
+/**<p>N√∫mero de m√©todos de classe na classe</p> 
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de m√©todos
 static na classe.</p> 
 */
     public double ncm(String className)
@@ -695,8 +695,8 @@ static na classe.</p>
 		return (double) cont;
 	}
 
-/** MÈtrica calculada atravÈs da contagem do n˙mero de mÈtodos
-static na classe, porÈm somente os mÈtodos p˙blicos s„o considerados. 
+/** M√©trica calculada atrav√©s da contagem do n√∫mero de m√©todos
+static na classe, por√©m somente os m√©todos p√∫blicos s√£o considerados. 
 */
 
     public double ncm_2(String className)
@@ -721,11 +721,11 @@ static na classe, porÈm somente os mÈtodos p˙blicos s„o considerados.
 		return (double) cont;
 	}
 
-/**<p>N˙mero de vari·veis de inst‚ncia na classe </p>
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de vari·veis de
-inst‚ncia na classe, o que inclui as vari·veis public,
-private e protected disponÌveis para as
-inst‚ncias.</p>    */
+/**<p>N√∫mero de vari√°veis de inst√¢ncia na classe </p>
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de vari√°veis de
+inst√¢ncia na classe, o que inclui as vari√°veis public,
+private e protected dispon√≠veis para as
+inst√¢ncias.</p>    */
 	public double niv(String className)
     {
     	RClass rc = prog.get(className);
@@ -744,8 +744,8 @@ inst‚ncias.</p>    */
 		return (double) cont;
 	}
 
-/** <p>N˙mero de vari·veis de classe na classe </p> 
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de vari·veis
+/** <p>N√∫mero de vari√°veis de classe na classe </p> 
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de vari√°veis
 static na classe.    </p>
 */
 	public double ncv(String className)
@@ -765,10 +765,10 @@ static na classe.    </p>
 		}
 		return (double) cont;
 	}
-/**<p>N˙mero mÈdio de par‚metros por mÈtodo </p>
-<p>MÈtrica calculada atravÈs da divis„o entre o somatÛrio do n˙mero
-de par‚metros de cada mÈtodo da classe pelo n˙mero total de
-mÈtodos da classe. Construtores s„o considerados. </p>
+/**<p>N√∫mero m√©dio de par√¢metros por m√©todo </p>
+<p>M√©trica calculada atrav√©s da divis√£o entre o somat√≥rio do n√∫mero
+de par√¢metros de cada m√©todo da classe pelo n√∫mero total de
+m√©todos da classe. Construtores s√£o considerados. </p>
 */
     public double anpm(String className)
     {
@@ -797,7 +797,7 @@ mÈtodos da classe. Construtores s„o considerados. </p>
 	}
 
 
-/**<p>N˙mero m·ximo de par‚metros em um mÈtodo da classe</p>
+/**<p>N√∫mero m√°ximo de par√¢metros em um m√©todo da classe</p>
 */
     public double mnpm(String className)
     {
@@ -822,10 +822,10 @@ mÈtodos da classe. Construtores s„o considerados. </p>
 		return (double) max;
 	}
 
-/**<p>Tamanho mÈdio do mÈtodo </p>
-<p>MÈtrica calculada atravÈs da divis„o entre a soma do n˙mero de
-linhas de cÛdigo dos mÈtodos da classe pelo n˙mero de mÈtodos na
-classe (soma dos mÈtodos inst‚ncia e classe). Construtores inclusive </p>
+/**<p>Tamanho m√©dio do m√©todo </p>
+<p>M√©trica calculada atrav√©s da divis√£o entre a soma do n√∫mero de
+linhas de c√≥digo dos m√©todos da classe pelo n√∫mero de m√©todos na
+classe (soma dos m√©todos inst√¢ncia e classe). Construtores inclusive </p>
 */
     public double amz_locm(String className)
     {
@@ -854,10 +854,10 @@ classe (soma dos mÈtodos inst‚ncia e classe). Construtores inclusive </p>
         return theValue / cont;
     }
 
-/**<p>Tamanho mÈdio do mÈtodo </p>
-<p>MÈtrica calculada atravÈs da divis„o entre a soma do numero de
-instrucoes dos mÈtodos da classe pelo n˙mero de mÈtodos na
-classe (soma dos mÈtodos inst‚ncia e classe). Construtores inclusive </p>
+/**<p>Tamanho m√©dio do m√©todo </p>
+<p>M√©trica calculada atrav√©s da divis√£o entre a soma do numero de
+instrucoes dos m√©todos da classe pelo n√∫mero de m√©todos na
+classe (soma dos m√©todos inst√¢ncia e classe). Construtores inclusive </p>
 */
     public double amz_size(String className)
     {
@@ -886,7 +886,7 @@ classe (soma dos mÈtodos inst‚ncia e classe). Construtores inclusive </p>
         return theValue / cont;
     }
 
-/**<p>n˙mero de interfaces implementadas pela classe </p>
+/**<p>n√∫mero de interfaces implementadas pela classe </p>
 */
     public double nii(String className)
     {
@@ -902,11 +902,11 @@ classe (soma dos mÈtodos inst‚ncia e classe). Construtores inclusive </p>
     }
     
  
-/**<p>N˙mero de mÈtodos sobrescritos na subclasse </p>
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de mÈtodos
-definidos na subclasse com a mesma assinatura de um mÈtodo na sua
-superclasse. Construtores e inicializadores est·ticos 
-N√O s„o considerados. </p>
+/**<p>N√∫mero de m√©todos sobrescritos na subclasse </p>
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de m√©todos
+definidos na subclasse com a mesma assinatura de um m√©todo na sua
+superclasse. Construtores e inicializadores est√°ticos 
+N√ÉO s√£o considerados. </p>
 */
     public double nmos(String className)
     {
@@ -932,10 +932,10 @@ N√O s„o considerados. </p>
         return (double) cont;
     }
 
-/**<p> N˙mero de mÈtodos adicionados pela subclasse </p>
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de novos mÈtodos
-adicionados pela classe. Construtores e inicializadores est·ticos 
-N√O s„o considerados.</p>
+/**<p> N√∫mero de m√©todos adicionados pela subclasse </p>
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de novos m√©todos
+adicionados pela classe. Construtores e inicializadores est√°ticos 
+N√ÉO s√£o considerados.</p>
 */
     public double nmas(String className)
     {
@@ -961,11 +961,11 @@ N√O s„o considerados.</p>
         return (double) cont;
     }
 
-/**<p>N˙mero de mÈtodos herdados pela subclasse </p>
-<p>MÈtrica calculada atravÈs da contagem do n˙mero de mÈtodos
+/**<p>N√∫mero de m√©todos herdados pela subclasse </p>
+<p>M√©trica calculada atrav√©s da contagem do n√∫mero de m√©todos
 herdados pela subclasse de suas superclasses. Construtores e 
-inicializadores est·ticos 
-N√O s„o considerados.</p>
+inicializadores est√°ticos 
+N√ÉO s√£o considerados.</p>
 */
     public double nmis(String className)
     {
@@ -994,9 +994,9 @@ N√O s„o considerados.</p>
     }
 
 
-/**<p>Õndice de EspecializaÁ„o </p>
-<p>MÈtrica calculada atravÈs da divis„o entre o resultado da
-multiplicaÁ„o de NMOS e DIT (mÈtrica de CK) pelo n˙mero total de mÈtodos. </p>
+/**<p>√çndice de Especializa√ß√£o </p>
+<p>M√©trica calculada atrav√©s da divis√£o entre o resultado da
+multiplica√ß√£o de NMOS e DIT (m√©trica de CK) pelo n√∫mero total de m√©todos. </p>
 */
     public double si(String className)
     {
