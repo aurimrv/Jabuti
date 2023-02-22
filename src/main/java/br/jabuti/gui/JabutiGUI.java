@@ -4169,13 +4169,15 @@ public class JabutiGUI extends JFrame {
 		incDecPanel.setMinimumSize(new Dimension(16,32));
 		incDecPanel.setMaximumSize(new Dimension(16,32));
 		
-		URL url = JabutiGUI.class.getResource("plus.png");
+		URL url = ToolConstants
+				.getToolBaseResource("plus.png");
 		increaseButton = new JButton(new ImageIcon(url));
 		increaseButton.setToolTipText("Increase GUI components font size.");
 		increaseButton.setVerticalAlignment(AbstractButton.CENTER);
 		increaseButton.setHorizontalAlignment(AbstractButton.CENTER);
 		
-		url = JabutiGUI.class.getResource("minus.png");
+		url = ToolConstants
+				.getToolBaseResource("minus.png");
 		decreaseButton = new JButton(new ImageIcon(url));
 		decreaseButton.setToolTipText("Decrease GUI components font size.");
 		decreaseButton.setVerticalAlignment(AbstractButton.CENTER);

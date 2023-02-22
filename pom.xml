@@ -64,14 +64,14 @@
 
 		<resources>
 			<resource>
-				<directory>${project.basedir}/resources</directory>
+				<directory>${project.basedir}/src/main/resources</directory>
 				<filtering>false</filtering>
 			</resource>
 		</resources>
 
 		<testResources>
 			<testResource>
-				<directory>${project.basedir}/test-resources</directory>
+				<directory>${project.basedir}/src/test/resources</directory>
 				<filtering>false</filtering>
 			</testResource>
 		</testResources>

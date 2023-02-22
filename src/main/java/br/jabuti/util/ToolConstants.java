@@ -146,8 +146,8 @@ public class ToolConstants {
     }
 	
     static public URL getToolBaseResource(String filename) {
-        URL toolBaseDirectory = JabutiGUI.class.getResource(filename);
-        return toolBaseDirectory;
+        URL resource = JabutiGUI.class.getResource(filename);
+        return resource;
     }
     
     static public Class getClassFromClasspath(String cName, boolean initialize, String classpath) throws MalformedURLException, ClassNotFoundException {
