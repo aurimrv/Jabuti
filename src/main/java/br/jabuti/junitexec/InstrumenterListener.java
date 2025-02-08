@@ -19,76 +19,75 @@
 
 package br.jabuti.junitexec;
 
+import org.junit.platform.launcher.TestExecutionListener;
+import org.junit.platform.launcher.TestIdentifier;
+import org.junit.platform.engine.TestExecutionResult;
+
+
+import br.jabuti.probe.DefaultProber;
+
 import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.runner.Description;
-import org.junit.runner.Result;
+public class InstrumenterListener implements TestExecutionListener {
+    private final Set<String> testSet;
+    private final String traceFileName;
+    private boolean enable;
+    private final PrintStream fWriter;
 
-import br.jabuti.probe.DefaultProber;
+    public InstrumenterListener(String trace, Set<String> ts, PrintStream writer) {
+        this.traceFileName = trace;
+        this.testSet = (ts != null) ? ts : new HashSet<>();
+        this.enable = false;
+        this.fWriter = writer;
+    }
 
-public class InstrumenterListener extends
-		org.junit.internal.TextListener {
-	private Set<String> testSet;
+    @Override
+    public void executionStarted(TestIdentifier testIdentifier) {
+        if (testIdentifier.isTest()) {
+            String tcName = JUnitUtil.getTestCaseName(testIdentifier.getDisplayName());
+            if (testSet.contains(tcName)) {
+                try {
+                    DefaultProber.startTrace(tcName);
+                } catch (Exception e) {
+                    e.printStackTrace(fWriter);
+                }
+                enable = true;
+                fWriter.append(JUnitUtil.traceMark);
+            }
+        }
+    }
 
-	private String traceFileName;
+    @Override
+    public void executionFinished(TestIdentifier testIdentifier, TestExecutionResult testExecutionResult) {
+        if (testIdentifier.isTest() && enable) {
+            enable = false;
+            try {
+                DefaultProber.stopTrace();
+            } catch (Exception e) {
+                e.printStackTrace(fWriter);
+            }
+        }
+    }
 
-	private boolean enable;
-	
-	private PrintStream fWriter;
+    @Override
+    public void testPlanExecutionStarted(org.junit.platform.launcher.TestPlan testPlan) {
+        fWriter.append(JUnitUtil.integratorName).append(": Instrumentor Mode\n");
+        try {
+            DefaultProber.init(traceFileName);
+            fWriter.println("Trace file: " + traceFileName);
+        } catch (Exception e) {
+            e.printStackTrace(fWriter);
+        }
+    }
 
-	public InstrumenterListener(String trace, Set<String> ts, PrintStream writer) {
-		super(writer);
-		traceFileName = trace;
-		enable = false;
-		if (ts == null)
-			testSet = new HashSet<String>();
-		else
-			testSet = ts;
-		fWriter = writer;
-	}
-
-	@Override
-	public void testRunStarted(Description description) throws Exception {
-		super.testRunStarted(description);
-		fWriter.append(JUnitUtil.integratorName + ": Instrumentor Mode\n");
-		DefaultProber.init(traceFileName);
-		System.out.println("Trace file: " + traceFileName);
-	}
-
-	@Override
-	public void testRunFinished(Result result) {
-		super.testRunFinished(result);
-		try {
-		DefaultProber.finished();
-		} catch (Exception e) {
-			e.printStackTrace(fWriter);
-		}
-	}
-	
-	@Override
-	public void testStarted(Description description) {
-		String tcName = JUnitUtil.getTestCaseName(description.getDisplayName());
-		if (testSet.contains(tcName)) {
-			try {
-				DefaultProber.startTrace(tcName);
-			} catch (Exception e) {
-				e.printStackTrace(fWriter);
-			}
-			enable = true;
-			fWriter.append(JUnitUtil.traceMark);
-		} else {
-			super.testStarted(description);
-		}
-	}
-
-	// @Override
-	public void testFinished(Description description) throws Exception {
-		super.testFinished(description);
-		if (enable) {
-			enable = false;
-			DefaultProber.stopTrace();
-		}
-	}
+    @Override
+    public void testPlanExecutionFinished(org.junit.platform.launcher.TestPlan testPlan) {
+        try {
+            DefaultProber.finished();
+        } catch (Exception e) {
+            e.printStackTrace(fWriter);
+        }
+    }
 }

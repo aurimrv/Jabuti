@@ -19,59 +19,55 @@
 
 package br.jabuti.junitexec;
 
-import java.io.PrintStream;
 import java.util.HashMap;
 
-import org.junit.runner.Description;
-import org.junit.runner.notification.Failure;
+import org.junit.platform.engine.TestExecutionResult;
+import org.junit.platform.launcher.TestExecutionListener;
+import org.junit.platform.launcher.TestIdentifier;
 
-public class CollectorListener extends
-		org.junit.internal.TextListener {
-	private HashMap<String, String> testSet = new HashMap<String, String>();
+public class CollectorListener implements TestExecutionListener {
+    private final HashMap<String, String> testSet = new HashMap<>();
 
-	private PrintStream fWriter;
-	
-	public CollectorListener(PrintStream writer) {
-		super(writer);
-		this.fWriter= writer;
-	}
-	
-	@Override
-	public void testRunStarted(Description description) throws Exception {
-		super.testRunStarted(description);
-		fWriter.append(JUnitUtil.integratorName + ": Collector Mode\n");
-	}
+    public CollectorListener() {
+ 
+    }
 
-	@Override
-	public void testStarted(Description description) {
-		super.testStarted(description);
-		String tc = JUnitUtil.getTestCaseName(description.getDisplayName());
-		// System.out.println("Begin: " + tc);
-		testSet.put(tc, JUnitUtil.SUCCESS);
-	}
+    @Override
+    public void executionStarted(TestIdentifier testIdentifier) {
+        if (testIdentifier.isTest()) {
+            String tc = JUnitUtil.getTestCaseName(testIdentifier.getDisplayName());
+            testSet.put(tc, JUnitUtil.SUCCESS);
+        }
+    }
 
-	@Override
-	public void testFinished(Description description) throws Exception {
-		super.testFinished(description);
-		//String tc = getTestCaseName(description.getDisplayName());
-		// System.out.println("End: " + tc);
-	}
+    @Override
+    public void executionFinished(TestIdentifier testIdentifier, TestExecutionResult testExecutionResult) {
+        if (testIdentifier.isTest()) {
+            String tc = JUnitUtil.getTestCaseName(testIdentifier.getDisplayName());
 
-	@Override
-	public void testFailure(Failure failure) {
-		super.testFailure(failure);
-		String tc = JUnitUtil.getTestCaseName(failure.getDescription().getDisplayName());
-		testSet.put(tc, JUnitUtil.FAILURE);
-	}
+            switch (testExecutionResult.getStatus()) {
+                case FAILED:
+                    testSet.put(tc, JUnitUtil.FAILURE);
+                    break;
+                case ABORTED:
+                    testSet.put(tc, JUnitUtil.IGNORED);
+                    break;
+                case SUCCESSFUL:
+                    testSet.put(tc, JUnitUtil.SUCCESS);
+                    break;
+            }
+        }
+    }
 
-	@Override
-	public void testIgnored(Description description) {
-		super.testIgnored(description);
-		String tc = JUnitUtil.getTestCaseName(description.getDisplayName());
-		testSet.put(tc, JUnitUtil.IGNORED);
-	}
+    @Override
+    public void executionSkipped(TestIdentifier testIdentifier, String reason) {
+        if (testIdentifier.isTest()) {
+            String tc = JUnitUtil.getTestCaseName(testIdentifier.getDisplayName());
+            testSet.put(tc, JUnitUtil.IGNORED);
+        }
+    }
 
-	public HashMap<String, String> getTestSet() {
-		return testSet;
-	}
+    public HashMap<String, String> getTestSet() {
+        return testSet;
+    }
 }

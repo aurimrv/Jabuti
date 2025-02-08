@@ -470,7 +470,7 @@ public class Main extends JDialog implements ActionListener {
 				ps = new PrintStream(fos);
 
 				hm = JUnitJabutiCore.runCollecting(classpath, tsuit.getText()
-						.trim(), ps);
+						.trim());
 				fos.close();
 			} catch (Exception e1) {
 				e1.printStackTrace(ps);

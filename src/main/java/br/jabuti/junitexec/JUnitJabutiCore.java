@@ -19,6 +19,12 @@
 
 package br.jabuti.junitexec;
 
+import org.junit.platform.launcher.Launcher;
+import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.launcher.core.LauncherFactory;
+import org.junit.platform.engine.discovery.DiscoverySelectors;
+
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -28,117 +34,99 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.junit.runner.JUnitCore;
-
 import br.jabuti.util.ToolConstants;
 
 public class JUnitJabutiCore {
 
-	static public HashMap<String, String> runCollecting(String classpath,
-			String ts, PrintStream ps) throws ClassNotFoundException,
-			InstantiationException, IllegalAccessException,
-			MalformedURLException, IllegalArgumentException,
-			InvocationTargetException, SecurityException, NoSuchMethodException {
+    public static HashMap<String, String> runCollecting(String classpath, String ts)
+            throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, MalformedURLException {
 
-		Class<?> clazz1 = ToolConstants.getClassFromClasspath(
-				"org.junit.runner.JUnitCore", true, classpath);
-		JUnitCore juc = (JUnitCore) clazz1.newInstance();
+        Launcher launcher = LauncherFactory.create();
 
-		Class<?> clazz = ToolConstants.getClassFromClasspath(
-				"br.jabuti.junitexec.CollectorListener", false, classpath);
+        Class<?> clazz = ToolConstants.getClassFromClasspath("br.jabuti.junitexec.CollectorListener", false, classpath);
+        Constructor<?> cons = clazz.getConstructor();
+        CollectorListener collectorListener = (CollectorListener) cons.newInstance();
 
-		Class[] argsClass = new Class[] { PrintStream.class };
-		Constructor<?> cons = clazz.getConstructor(argsClass);
-		CollectorListener il = (CollectorListener) cons.newInstance(ps);
+        launcher.registerTestExecutionListeners(collectorListener);
 
-		juc.addListener(il);
+        Class<?> testClass = ToolConstants.getClassFromClasspath(ts, false, classpath);
 
-		clazz = ToolConstants.getClassFromClasspath(ts, false, classpath);
+        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
+                .selectors(DiscoverySelectors.selectClass(testClass))
+                .build();
 
-		// Redirecting System.out
-		PrintStream current = System.out;
-		if (ps != null) {
-			System.setOut(ps);
-		}
-		juc.run(clazz);
+        launcher.execute(request);
 
-		System.setOut(current);
-		return il.getTestSet();
-	}
+        return collectorListener.getTestSet();
+    }
 
-	static public void runInstrumenting(String classpath, String ts,
-			String trace, Set<String> testSet, PrintStream ps)
-			throws ClassNotFoundException, MalformedURLException,
-			InstantiationException, IllegalAccessException, SecurityException,
-			NoSuchMethodException, IllegalArgumentException,
-			InvocationTargetException {
+    public static void runInstrumenting(String classpath, String ts, String trace, Set<String> testSet, PrintStream ps)
+            throws ClassNotFoundException, MalformedURLException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
-		Class<?> clazz1 = ToolConstants.getClassFromClasspath(
-				"org.junit.runner.JUnitCore", true, classpath);
-		JUnitCore juc = (JUnitCore) clazz1.newInstance();
+        Launcher launcher = LauncherFactory.create();
 
-		Class<?> clazz = ToolConstants.getClassFromClasspath(
-				"br.jabuti.junitexec.InstrumenterListener", false, classpath);
+        Class<?> clazz = ToolConstants.getClassFromClasspath("br.jabuti.junitexec.InstrumenterListener", false, classpath);
+        Constructor<?> cons = clazz.getConstructor(String.class, Set.class, PrintStream.class);
+        InstrumenterListener instrumenterListener = (InstrumenterListener) cons.newInstance(trace, testSet, ps);
 
-		Class[] argsClass = new Class[] { String.class, Set.class,
-				PrintStream.class };
-		Constructor<?> cons = clazz.getConstructor(argsClass);
-		InstrumenterListener il = (InstrumenterListener) cons.newInstance(
-				trace, testSet, ps);
+        launcher.registerTestExecutionListeners(instrumenterListener);
 
-		juc.addListener(il);
+        Class<?> testClass = ToolConstants.getClassFromClasspath(ts, false, classpath);
 
-		clazz = ToolConstants.getClassFromClasspath(ts, false, classpath);
+        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
+                .selectors(DiscoverySelectors.selectClass(testClass))
+                .build();
 
-		// Redirecting System.out
-		PrintStream current = System.out;
-		if (ps != null) {
-			System.setOut(ps);
-		}
-		juc.run(clazz);
-		System.setOut(current);
-	}
+        PrintStream current = System.out;
+        if (ps != null) {
+            System.setOut(ps);
+        }
+        launcher.execute(request);
+        System.setOut(current);
+    }
 
-	public static void main(String[] args) throws Exception {
-		String tcClass = null, trace = null, classpath = null;
-		Set<String> testSet = new HashSet<String>();
-		HashMap<String, String> hm;
+    public static void main(String[] args) throws Exception {
+        String tcClass = null, trace = null, classpath = null;
+        Set<String> testSet = new HashSet<>();
+        HashMap<String, String> hm;
 
-		if (args.length < 2) {
-			JUnitJabutiCore.usage();
-		} else {
+        if (args.length < 2) {
+            usage();
+        } else {
+            for (int i = 0; i < args.length; i++) {
+                switch (args[i]) {
+                    case "-trace":
+                        trace = args[++i];
+                        break;
+                    case "-tcClass":
+                        tcClass = args[++i];
+                        break;
+                    case "-cp":
+                        classpath = args[++i];
+                        break;
+                    default:
+                        testSet.add(args[i]);
+                        break;
+                }
+            }
+            
+            System.out.println("Collecting mode");
+            hm = runCollecting(classpath, tcClass);
+            for (String n : hm.keySet()) {
+                System.out.println("TC Name: " + n + " STATUS: " + hm.get(n));
+            }
+            
+            if (trace != null) {
+            	System.out.println("Instrumenting mode");
+                if (hm != null && !(hm.isEmpty())) {
+                    testSet = hm.keySet();
+                }
+                runInstrumenting(classpath, tcClass, trace, testSet, System.out);
+            }
+        }
+    }
 
-			for (int i = 0; i < args.length; i++) {
-				if ("-trace".equals(args[i]))
-					trace = args[++i];
-				else if ("-tcClass".equals(args[i]))
-					tcClass = args[++i];
-				else if ("-cp".equals(args[i]))
-					classpath = args[++i];
-				else
-					testSet.add(args[i]);
-			}
-			if (trace != null) {
-				if (testSet.size() == 0)
-					testSet = JUnitJabutiCore.runCollecting(classpath, tcClass,
-							System.out).keySet();
-				JUnitJabutiCore.runInstrumenting(classpath, tcClass, trace,
-						testSet, System.out);
-			} else {
-				hm = JUnitJabutiCore.runCollecting(classpath, tcClass,
-						System.out);
-				Iterator<String> it = hm.keySet().iterator();
-				while (it.hasNext()) {
-					String n = it.next();
-					System.out.println("TC Name: " + n + " STATUS: "
-							+ hm.get(n));
-				}
-			}
-		}
-	}
-
-	static public void usage() {
-		System.out
-				.println("JUnitJabutiCore [-trace <file_name>] -cp <test_set_classpath> -tcClass <test_class> [<test_case_name1> <test_case_name2>...]");
-	}
+    public static void usage() {
+        System.out.println("JUnitJabutiCore [-trace <file_name.trc>] -cp <app_instr.jar:test_set_classpath> -tcClass <test_class> [<test_case_name1> <test_case_name2>...]");
+    }
 }
