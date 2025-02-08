@@ -42,12 +42,20 @@
 			<version>[6.4.1,)</version>
 		</dependency>
 
+		<!-- Check README.md to install this dependency locally
 		<dependency>
 		    <groupId>com.graphbuilder</groupId>
 		    <artifactId>capi</artifactId>
 		    <version>1.0</version>
 		    <scope>system</scope>
 		    <systemPath>${pom.basedir}/lib/capi-1.0.jar</systemPath>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>com.graphbuilder</groupId>
+    		<artifactId>capi</artifactId>
+    		<version>1.0</version>
 		</dependency>
 	</dependencies>
 

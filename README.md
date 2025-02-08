@@ -1,4 +1,15 @@
-JABUTI 1.0.4
+# JABUTI 1.0.4
+
+Registering .jar maven packahe
+
+```
+mvn install:install-file \
+  -Dfile=lib/capi-1.0.jar \
+  -DgroupId=com.graphbuilder \
+  -DartifactId=capi \
+  -Dversion=1.0 \
+  -Dpackaging=jar
+```
 
 Building
 --------
