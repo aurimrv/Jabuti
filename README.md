@@ -71,3 +71,30 @@ Withou `-trace`, the runner only collects test case execution status:
 ```
 java -noverify -cp jabuti-2.0.0-full-jar-with-dependencies.jar br.jabuti.junitexec.JUnitJabutiCore -cp IDENT_instr.jar:target/test-classes -tcClass identifier.ValidateIdentifierTest
 ```
+
+It is also possible to specify the names of individual test cases to collect the trace only for these tests, as shown in the following example:
+
+```
+java -noverify -cp jabuti-2.0.0-full-jar-with-dependencies.jar br.jabuti.junitexec.JUnitJabutiCore -trace IDENT.trc -cp IDENT_instr.jar:target/test-classes -tcClass identifier.ValidateIdentifierTest validateValidTest validateInvalidTest01
+```
+
+
+The output will display something like this:
+
+```
+Collecting mode
+TC Name: validateValidTest STATUS: S
+TC Name: validateInvalidTest05 STATUS: E
+TC Name: identifierMain STATUS: I
+TC Name: validateInvalidTest01 STATUS: S
+TC Name: validateInvalidTest02 STATUS: S
+TC Name: validateInvalidTest03 STATUS: S
+TC Name: validateInvalidTest04 STATUS: S
+Instrumenting mode
+JUnit/JaBUTi Integrator: Instrumentor Mode
+Trace file: IDENT.trc
+T....T
+Trace collection finished
+```
+
+The `T....T` indicates that the trace was collected for the first and last tests, but not for the others.
