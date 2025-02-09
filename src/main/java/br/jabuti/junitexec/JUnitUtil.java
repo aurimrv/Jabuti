@@ -25,6 +25,7 @@ public class JUnitUtil {
     public static final String IGNORED = "I";
 
     public static final String traceMark = "T";
+    public static final String noTraceMark = ".";
     public static final String integratorName = "JUnit/JaBUTi Integrator";
 
     static String getTestCaseName(String displayName) {

@@ -19,20 +19,19 @@
 
 package br.jabuti.junitexec;
 
-import org.junit.platform.launcher.Launcher;
-import org.junit.platform.launcher.LauncherDiscoveryRequest;
-import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
-import org.junit.platform.launcher.core.LauncherFactory;
-import org.junit.platform.engine.discovery.DiscoverySelectors;
-
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
+
+import org.junit.platform.engine.discovery.DiscoverySelectors;
+import org.junit.platform.launcher.Launcher;
+import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.launcher.core.LauncherFactory;
 
 import br.jabuti.util.ToolConstants;
 
@@ -118,7 +117,8 @@ public class JUnitJabutiCore {
             
             if (trace != null) {
             	System.out.println("Instrumenting mode");
-                if (hm != null && !(hm.isEmpty())) {
+            	//Overwrite testSet with all test case names if testSet is empty
+                if (hm != null && testSet.isEmpty()) {
                     testSet = hm.keySet();
                 }
                 runInstrumenting(classpath, tcClass, trace, testSet, System.out);

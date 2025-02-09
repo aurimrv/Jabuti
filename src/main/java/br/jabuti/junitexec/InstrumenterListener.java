@@ -47,6 +47,7 @@ public class InstrumenterListener implements TestExecutionListener {
     public void executionStarted(TestIdentifier testIdentifier) {
         if (testIdentifier.isTest()) {
             String tcName = JUnitUtil.getTestCaseName(testIdentifier.getDisplayName());
+            // Collecting traces only for specific test case name
             if (testSet.contains(tcName)) {
                 try {
                     DefaultProber.startTrace(tcName);
@@ -55,6 +56,8 @@ public class InstrumenterListener implements TestExecutionListener {
                 }
                 enable = true;
                 fWriter.append(JUnitUtil.traceMark);
+            } else {
+            	fWriter.append(JUnitUtil.noTraceMark);
             }
         }
     }
@@ -84,6 +87,7 @@ public class InstrumenterListener implements TestExecutionListener {
 
     @Override
     public void testPlanExecutionFinished(org.junit.platform.launcher.TestPlan testPlan) {
+    	fWriter.append("\nTrace collection finished\n");
         try {
             DefaultProber.finished();
         } catch (Exception e) {
